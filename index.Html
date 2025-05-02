@@ -1,0 +1,127 @@
+<div class="query-form">
+  <h2>Get in Touch</h2>
+
+  <div class="form-group">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" placeholder="you@example.com">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="+91-XXXXXXXXXX">
+  </div>
+
+  <div class="form-group">
+    <label for="message">Your Query</label>
+    <textarea id="message" placeholder="Type your message or query here..."></textarea>
+  </div>
+
+  <div class="form-submit">
+    <button type="submit">Submit</button>
+  </div>
+</div>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  padding: 30px;
+}
+
+.query-form {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  max-width: 500px;
+  margin: auto;
+}
+
+.query-form h2 {
+  margin-bottom: 20px;
+  color: #00796b;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.form-submit button {
+  padding: 12px 30px;
+  background-color: #00796b;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-submit button:hover {
+  background-color: #004d40;
+}
+document.querySelector(".form-submit button").addEventListener("click", function(e) {
+  e.preventDefault(); // Prevent page refresh
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  // Basic validation
+  if (!name || !email || !phone || !message) {
+    alert("Please fill in all the fields.");
+    return;
+  }
+
+  // Email format check
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // Phone format (optional, you can customize)
+  if (phone.length < 10 || isNaN(phone)) {
+    alert("Please enter a valid phone number.");
+    return;
+  }
+
+  // Simulate submission
+  alert("Thank you " + name + "! Your query has been submitted successfully.");
+  
+  // Optionally, clear form
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("message").value = "";
+});
+
